@@ -1,5 +1,6 @@
 <script setup lang="ts">
-// https://vcalendar.io/
+// https://vcalendar.io
+// https://github.com/nathanreyes/vue-screen-utils
 
 import { reactive, ref } from "vue";
 import { useScreens } from "vue-screen-utils";
@@ -53,10 +54,6 @@ calendarMaxDate.setMonth(calendarMaxDate.getMonth() + 9);
 
 // methods
 
-const onCustomerSelection = () => {
-    model.shippingAddressList.forEach((sa) => (sa.name += ` - ${model.selectedCustomerId}`));
-};
-
 const onFormSubmitted = () => {
     console.log("selectedCustomerId", model.selectedCustomerId);
     console.log("selectedShippingAddressId", model.selectedShippingAddressId);
@@ -75,14 +72,18 @@ const onCalenderDayClick = (calendarDay: CalendarDay) => {
 <template>
     <div>
         <form class="mb-3">
+            <div v-show="model.selectedCustomerId > 0 || model.selectedShippingAddressId > 0" class="alert alert-success" data-testid="form-result">
+                {{ model.selectedCustomerId }} - {{ model.selectedShippingAddressId }}
+            </div>
+
             <div class="mb-3">
-                <select v-model="model.selectedCustomerId" @change="onCustomerSelection" class="form-select">
+                <select v-model="model.selectedCustomerId" class="form-select" data-testid="customer-select">
                     <option v-for="customer in model.customerList" :key="customer.id" :value="customer.id">{{ customer.name }}</option>
                 </select>
             </div>
 
             <div class="mb-3">
-                <select v-model="model.selectedShippingAddressId" class="form-select">
+                <select v-model="model.selectedShippingAddressId" class="form-select" data-testid="shipping-address-select">
                     <option v-for="shippingAddress in model.shippingAddressList" :key="shippingAddress.id" :value="shippingAddress.id">{{ shippingAddress.name }}</option>
                 </select>
             </div>

@@ -5,6 +5,8 @@ import DeliveryMomentPicker from "./components/DeliveryMomentPicker.vue";
 
 <template>
     <main>
+        <h1>Welcome to the Component playground!</h1>
+
         <DeliveryMomentPicker />
         <!-- <SwiperExample /> -->
     </main>
