@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // https://vcalendar.io
 // https://github.com/nathanreyes/vue-screen-utils
-// NOTE: do not forget to set web components in vite.config.ts
 
 import { reactive, ref } from "vue";
 import { useScreens } from "vue-screen-utils";

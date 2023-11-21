@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // https://swiperjs.com/element
+// NOTE: do not forget to set Swiper web components in vite.config.ts
 
 import { register } from "swiper/element/bundle";
 
