@@ -3,12 +3,14 @@ import { reactive } from "vue";
 import Multiselect from "@vueform/multiselect";
 
 const model = reactive({
-    value: null,
+    value: [] as any[],
     options: [] as any[],
 });
 
 model.options.push({ value: 1, label: "Kevin" });
 model.options.push({ value: 2, label: "Vicky" });
+
+model.value.push(2); // pre-select
 
 // methods
 
