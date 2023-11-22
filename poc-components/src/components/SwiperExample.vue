@@ -2,8 +2,6 @@
 // https://swiperjs.com/element
 // NOTE: do not forget to set Swiper web components in vite.config.ts
 
-import { register } from "swiper/element/bundle";
-
 const swiperSpaceBetween = 10;
 
 const onSwiperProgress = (e: any) => {
@@ -15,12 +13,28 @@ const onSwiperSlideChange = (e: any) => {
     console.log("slide changed");
 };
 
+import { register } from "swiper/element/bundle";
+
 // register Swiper custom elements
 register();
+
+const swiperEl = document.querySelector("swiper-container");
+
+if (swiperEl) {
+    const params = {
+        injectStylesUrls: ["/swiper/pagination.css"],
+    };
+
+    Object.assign(swiperEl, params);
+
+    swiperEl.initialize();
+}
 </script>
 
 <template>
-    <div>
+    <div class="mb-5">
+        <h2>Swiper Example</h2>
+
         <swiper-container
             :slides-per-view="1"
             :space-between="swiperSpaceBetween"

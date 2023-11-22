@@ -14,7 +14,9 @@ const onClicked = (itemName: string) => {
 </script>
 
 <template>
-    <div>
+    <div class="mb-5">
+        <h2>Fancy List With Slot</h2>
+
         <ul>
             <li v-for="item in model.list" :key="item.id" class="my-2">
                 <slot name="item" :item="item" :clicked="onClicked"></slot>

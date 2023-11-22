@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// https://github.com/vueform/multiselect
+
 import { reactive } from "vue";
 import Multiselect from "@vueform/multiselect";
 
@@ -20,7 +22,9 @@ const onAddItemsClicked = () => {
 </script>
 
 <template>
-    <div>
+    <div class="mb-5">
+        <h2>Multi Select Example</h2>
+
         <div v-show="model.value" class="alert alert-success">
             {{ model.value }}
         </div>

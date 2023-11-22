@@ -55,9 +55,6 @@ calendarMaxDate.setMonth(calendarMaxDate.getMonth() + 9);
 // methods
 
 const onFormSubmitted = () => {
-    console.log("selectedCustomerId", model.selectedCustomerId);
-    console.log("selectedShippingAddressId", model.selectedShippingAddressId);
-
     calendarAttributes.value.push({
         bar: "#00ff00",
         dates: [new Date(2023, 10, 2), new Date(2023, 10, 15), new Date(2023, 10, 26)],
@@ -70,7 +67,9 @@ const onCalenderDayClick = (calendarDay: CalendarDay) => {
 </script>
 
 <template>
-    <div>
+    <div class="mb-5">
+        <h2>Delivery Moment Picker</h2>
+
         <form class="mb-3">
             <div v-show="model.selectedCustomerId > 0 || model.selectedShippingAddressId > 0" class="alert alert-success" data-testid="form-result">
                 {{ model.selectedCustomerId }} - {{ model.selectedShippingAddressId }}
