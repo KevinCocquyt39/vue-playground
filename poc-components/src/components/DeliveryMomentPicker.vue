@@ -54,11 +54,23 @@ calendarMaxDate.setMonth(calendarMaxDate.getMonth() + 9);
 
 // methods
 
-const onFormSubmitted = () => {
+const onAddDatesClicked = () => {
     calendarAttributes.value.push({
+        key: "delivery-moments",
         bar: "#00ff00",
         dates: [new Date(2023, 10, 2), new Date(2023, 10, 15), new Date(2023, 10, 26)],
     });
+};
+
+const onAddMoreDatesClicked = () => {
+    var deliveryMoments = calendarAttributes.value.find((a: any) => a.key === "delivery-moments");
+    deliveryMoments.dates = [...deliveryMoments.dates, new Date(2023, 11, 2), new Date(2023, 11, 15), new Date(2023, 11, 26)];
+};
+
+const onRemoveDatesClicked = () => {
+    var deliveryMoments = calendarAttributes.value.find((a: any) => a.key === "delivery-moments");
+    deliveryMoments.dates.splice(1, 1);
+    console.log("deliveryMoments", deliveryMoments);
 };
 
 const onCalenderDayClick = (calendarDay: CalendarDay) => {
@@ -86,18 +98,28 @@ const onCalenderDayClick = (calendarDay: CalendarDay) => {
                     <option v-for="shippingAddress in model.shippingAddressList" :key="shippingAddress.id" :value="shippingAddress.id">{{ shippingAddress.name }}</option>
                 </select>
             </div>
-
-            <button type="button" class="btn btn-primary" @click="onFormSubmitted">Ok</button>
         </form>
 
-        <Calendar
-            :columns="calendarColumns"
-            :attributes="calendarAttributes"
-            :min-date="calendarMinDate"
-            :max-date="calendarMaxDate"
-            :first-day-of-week="2"
-            @dayclick="onCalenderDayClick"
-        />
+        <div>
+            <div class="mb-2">
+                <button type="button" class="btn btn-primary mx-1" @click="onAddDatesClicked">Add dates</button>
+                <button type="button" class="btn btn-primary mx-1" @click="onAddMoreDatesClicked">Add more dates</button>
+                <button type="button" class="btn btn-primary mx-1" @click="onRemoveDatesClicked">Remove dates</button>
+            </div>
+
+            <Calendar
+                :columns="calendarColumns"
+                :attributes="calendarAttributes"
+                :min-date="calendarMinDate"
+                :max-date="calendarMaxDate"
+                :first-day-of-week="2"
+                @dayclick="onCalenderDayClick"
+            />
+
+            <div v-show="calendarAttributes" class="alert alert-success my-2">
+                {{ calendarAttributes }}
+            </div>
+        </div>
     </div>
 </template>
 
