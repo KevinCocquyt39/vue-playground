@@ -2,6 +2,7 @@
 import DeliveryMomentPicker from "./components/DeliveryMomentPicker.vue";
 import FancyItemUsingSlot from "./components/FancyItemUsingSlot.vue";
 import MultiSelectExample from "./components/MultiSelectExample.vue";
+import RegExConverter from "./components/RegExConverter.vue";
 import SwiperExample from "./components/SwiperExample.vue";
 </script>
 
@@ -12,6 +13,7 @@ import SwiperExample from "./components/SwiperExample.vue";
         <DeliveryMomentPicker />
         <FancyItemUsingSlot />
         <MultiSelectExample />
+        <RegExConverter />
         <SwiperExample />
     </main>
 </template>
